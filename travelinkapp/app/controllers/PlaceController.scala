@@ -37,8 +37,25 @@ class PlaceController @Inject() (
 	def find() = Action.async {
 		// let's do our query
 		val futurePlacesList: Future[List[Place]] = placesFuture.flatMap {
-		// find all cities with name `name`
+		// find all places
 		_.find(Json.obj()).
+		// perform the query and get a cursor of JsObject
+		cursor[Place](ReadPreference.primary).
+		// Coollect the results as a list
+		collect[List]()
+		}
+
+		// everything's ok! Let's reply with a JsValue
+		futurePlacesList.map { places =>
+			Ok(Json.toJson(places))
+		}
+  }
+
+  def findByAreaCategory(area_id: Int, cat_id: Int) = Action.async {
+  		// let's do our query
+		val futurePlacesList: Future[List[Place]] = placesFuture.flatMap {
+		// find all places
+		_.find(Json.obj("area_id" -> area_id, "category_id" -> cat_id)).
 		// perform the query and get a cursor of JsObject
 		cursor[Place](ReadPreference.primary).
 		// Coollect the results as a list
