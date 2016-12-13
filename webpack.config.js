@@ -4,7 +4,7 @@ module.exports = {
   context: __dirname + "/travelinkapp/public/javascripts", 	
   entry: {
     main: [	
-      './single.js'
+      './travel.js'
     ]
   },
   output: {
