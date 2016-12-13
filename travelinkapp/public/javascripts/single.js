@@ -53,36 +53,6 @@ class Paralax extends React.Component {
   }
 }
 
-class Paralax1 extends React.Component {
-  render() {
-    return (
-      <div className="row">
-        <div className="section p-section no-pad-bot">
-          <div className="container">
-            
-            <h1 className="header center teal-text text-lighten-2">TraveLink</h1>
-            <div className="row center">
-              <h5 className="header col s12 light">
-                See places around your destination
-              </h5>
-            </div>
-            <div className="row center">
-
-              <Row>
-                  <Input placeholder="Street, Adress, Postal Code" s={12} m={6} l={6} label="" />
-                  <Button s={6}>Search</Button>
-              </Row>
-            </div>
-          </div>
-
-          
-          
-        </div>
-      </div>
-    );
-  }
-}
-
 const ptop0 = {
   'paddingTop': '0px',
 };
@@ -165,110 +135,6 @@ class Ttab extends React.Component {
   }
 }
 
-class Result extends React.Component {
-  render() {
-    return (
-       <div className="row container section">
-          <h5>* Culinary in Slipi</h5>
-
-          <CardPanel className="lighten-4 black-text hoverable">
-            <div className="row">
-              <Col s={2}>
-                img
-              </Col>
-
-              <Col s={10}>
-                Resto Kemuning <br />
-                (Cat) Chinese Food <br />
-                (Open) 10.00 - 21.00 <br />
-                Jl. Slipi <br />
-              </Col>
-           
-            </div>
-          </CardPanel>
-
-          <CardPanel className="lighten-4 black-text hoverable">
-
-            <div className="row">
-              <Col s={2}>
-                img
-              </Col>
-
-              <Col s={10}>
-                Starbucks Wisma 77 <br />
-                (Cat) Coffee Shop<br />
-                (Open) 10.00 - 21.00 <br />
-                Jl. Slipi <br />
-              </Col>
-            </div>
-          </CardPanel>
-
-          <CardPanel className="lighten-4 black-text hoverable">
-             <div className="row">
-              <Col s={2}>
-                img
-              </Col>
-
-              <Col s={10}>
-                ATM BNI Wisma 77 <br />
-                (Cat) ATM<br />
-                Wisma 77, Jl. Slipi<br />
-              </Col>
-            </div>
-          </CardPanel>
-
-          <CardPanel className="lighten-4 black-text hoverable">
-            <div className="row">
-              <Col s={2}>
-                img
-              </Col>
-
-              <Col s={10}>
-                Alfamart KS Tubun <br />
-                (Cat) Minimarket<br />
-                Jl. KS Tubun, Slipi<br />
-              </Col>
-            </div>
-          </CardPanel>
-
-          <CardPanel className="lighten-4 black-text hoverable">
-            <div className="row">
-              <Col s={2}>
-                img
-              </Col>
-
-              <Col s={10}>
-                Lawson Belitung <br />
-                (Cat) Convenient Store<br />
-                (Open) 24 hours <br />
-                Jl. Tanjung Pandan Belitung<br />
-              </Col>
-            </div>
-          </CardPanel>
-       
-       </div>
-    );
-    }
-
-}
-
-class Dd extends React.Component {
-  render() {
-    return (
-      <div className="row container">
-        <Dropdown trigger={
-          <Button>Drop me!</Button>
-        }>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Hello</p>
-        <p>Bye</p>
-        </Dropdown>
-      </div>
-    );
-    }
-}
-
 class App extends React.Component {
   render () {
     return (
@@ -287,20 +153,6 @@ class Search extends React.Component {
         <Ttab />
         <Place params={this.props.params} />
         <FootLinks />
-      </div>
-    );
-  }
-}
-
-class Links extends React.Component {
-  render() {
-    return (
-      <div>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/search">Search</Link></li>
-        </ul>
-        {this.props.children}
       </div>
     );
   }
