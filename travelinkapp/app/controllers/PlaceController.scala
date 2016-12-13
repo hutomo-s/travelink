@@ -52,10 +52,17 @@ class PlaceController @Inject() (
   }
 
   def findByAreaCategory(area_id: Int, cat_id: Int) = Action.async {
+
+		var jsonQuery = Json.obj()
+
+		if(area_id != 0 && cat_id != 0){
+			jsonQuery = Json.obj("area_id" -> area_id, "category_id" -> cat_id)
+		}
+
   		// let's do our query
 		val futurePlacesList: Future[List[Place]] = placesFuture.flatMap {
 		// find all places
-		_.find(Json.obj("area_id" -> area_id, "category_id" -> cat_id)).
+		_.find(jsonQuery).
 		// perform the query and get a cursor of JsObject
 		cursor[Place](ReadPreference.primary).
 		// Coollect the results as a list
