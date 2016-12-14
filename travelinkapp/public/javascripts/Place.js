@@ -15,26 +15,26 @@ class Place extends Component {
 			title: "Culinary in Slipi",
 			url: this.props.placeUrl,
             places: [],
-			query: query
         };
+
+		this.loadPlaces(query);
     }
 
-    componentDidMount(){
-		this.loadPlaces();
-    }
+    componentWillReceiveProps(nextProps){
+		var query = nextProps.params;
+		alert(query.area_id);
+		this.loadPlaces(query);
+	}
 
-	loadPlaces() {
-				
+	loadPlaces(query) {
 		$.ajax({
 			url: this.state.url,
 			method: "GET",
-			data: this.state.query,
+			data: query,
 			dataType: 'json',
 			cache: false,
 			success: function(data) {
-				if(data.data){
-					this.setState({places: data.data});
-				}
+				this.setState({places: data.data});
 			}.bind(this),
 			error: function(xhr, status, err) {
 				console.error(this.state.url, status, err.toString());
@@ -43,7 +43,7 @@ class Place extends Component {
 	}
 
     render(){
-
+		
         // Map through cars and return linked cars
         const placeNode = this.state.places.map((place) => {
             return (
