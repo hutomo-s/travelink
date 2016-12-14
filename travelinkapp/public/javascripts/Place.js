@@ -22,7 +22,7 @@ class Place extends Component {
 
     componentWillReceiveProps(nextProps){
 		var query = nextProps.params;
-		alert(query.area_id);
+		
 		this.loadPlaces(query);
 	}
 
