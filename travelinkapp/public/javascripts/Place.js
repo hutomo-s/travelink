@@ -13,59 +13,34 @@ class Place extends Component {
         this.state = {
             // State needed
 			title: "Culinary in Slipi",
+			url: this.props.placeUrl,
             places: [],
 			query: query
         };
-
     }
 
     componentDidMount(){
-        // Static data
-        const data = [
-			{	
-				"id": 3,
-				"area_id": 1,
-				"city_code": "JKT",
-				"img" : "src",
-				"name": "Resto Kemuning",
-				"category_id" : 1,
-				"category_name" : "Culinary",
-				"subcategory_id": 5,
-				"subcategory_name" : "Chinese Food",
-				"open_hours" : "10.00 - 21.00",
-				"full_address" : "Jalan Slipi"
-			},
-			{
-				"id": 4,
-				"area_id": 1,
-				"city_code": "JKT",
-				"img" : "src",
-				"name": "ATM BNI",
-				"category_id" : 3,
-				"category_name" : "ATM",
-				"subcategory_id": 0,
-				"subcategory_name" : "",
-				"open_hours" : "",
-				"full_address" : "Jalan Slipi"
-			},
-			{
-				"id": 5,
-				"area_id": 1,
-				"city_code": "JKT",
-				"img" : "src",
-				"name": "Lawson KS Tubun",
-				"category_id" : 20,
-				"category_name" : "Minimarket",
-				"subcategory_id": 8,
-				"subcategory_name" : "Convenient Store",
-				"open_hours" : "24 Hours",
-				"full_address" : "Jalan KS Tubun"
-			}
-		];
-
-		// Update state
-        this.setState({places: data});
+		this.loadPlaces();
     }
+
+	loadPlaces() {
+				
+		$.ajax({
+			url: this.state.url,
+			method: "GET",
+			data: this.state.query,
+			dataType: 'json',
+			cache: false,
+			success: function(data) {
+				if(data.data){
+					this.setState({places: data.data});
+				}
+			}.bind(this),
+			error: function(xhr, status, err) {
+				console.error(this.state.url, status, err.toString());
+			}.bind(this)
+		});
+	}
 
     render(){
 

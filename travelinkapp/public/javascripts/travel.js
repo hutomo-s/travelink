@@ -69,11 +69,14 @@ class FootLinks extends React.Component {
             <h5 className="truncate white-text">Popular Culinary Destination</h5>
             <ul>
               <li>
-                <Link to="/search/1/3" className="truncate grey-text text-lighten-3" activeClassName="truncate grey-text text-lighten-3">Slipi, DKI Jakarta Culinary</Link>
+                <Link to="/search/1/1" className="truncate grey-text text-lighten-3" activeClassName="truncate grey-text text-lighten-3">Slipi, DKI Jakarta Culinary</Link>
               </li>
-              <li><a className="truncate grey-text text-lighten-3" href="#!">Slipi, DKI Jakarta Culinary</a></li>
-              <li><a className="truncate grey-text text-lighten-3" href="#!">Cihampelas, Bandung Culinary</a></li>
-              <li><a className="truncate grey-text text-lighten-3" href="#!">Tj Pandan, Belitung Culinary</a></li>
+              <li>
+                <Link to="/search/2/1" className="truncate grey-text text-lighten-3" activeClassName="truncate grey-text text-lighten-3">Cihampelas, Bandung Culinary</Link>
+              </li>
+              <li>
+                <Link to="/search/3/1" className="truncate grey-text text-lighten-3" activeClassName="truncate grey-text text-lighten-3">Tj Pandan, Belitung Culinary</Link>
+              </li>
             </ul>
           </Col>
 
@@ -151,7 +154,7 @@ class Search extends React.Component {
     return(
       <div>
         <Ttab />
-        <Place params={this.props.params} />
+        <Place params={this.props.params} placeUrl={getPlaces} />
         <FootLinks />
       </div>
     );
@@ -163,7 +166,7 @@ ReactDOM.render(
     <Route path="/" component={Nav}>
       <IndexRoute component={App} />
         <Route path="search" component={Search}>
-        <Route path="/search/:areaId/:catId" component={Search}/>
+        <Route path="/search/:area_id/:cat_id" component={Search}/>
       </Route>
     </Route>
   </Router>, document.querySelector('.react-root')

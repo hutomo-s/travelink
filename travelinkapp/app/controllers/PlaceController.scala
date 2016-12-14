@@ -54,6 +54,7 @@ class PlaceController @Inject() (
   def findByAreaCategory(area_id: Int, cat_id: Int) = Action.async {
 
 		var jsonQuery = Json.obj()
+		var returnJson = Json.obj()
 
 		if(area_id != 0 && cat_id != 0){
 			jsonQuery = Json.obj("area_id" -> area_id, "category_id" -> cat_id)
@@ -71,7 +72,17 @@ class PlaceController @Inject() (
 
 		// everything's ok! Let's reply with a JsValue
 		futurePlacesList.map { places =>
-			Ok(Json.toJson(places))
+			val placesReturn = places
+			//Ok(Json.toJson(places))
+
+			returnJson = Json.obj(
+				"status" -> 200,
+				"message" -> "Success",
+				"data" -> placesReturn
+			)
+
+			Ok(Json.toJson(returnJson))
 		}
+
   }
 }
