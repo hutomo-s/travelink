@@ -46,16 +46,6 @@ class MainButton extends Component {
     };
   }
 
-  //  handleUpdateInput(value) {
-  //   this.setState({
-  //     userInput: value,
-  //   });
-  // }
-
-  // onNewRequest(searchTerm) {
-	//   alert(this.state.userInput);
-  // }
-
   handleUpdateInput (t) { 
     this.setState({ searchText: t }); 
   }
